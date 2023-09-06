@@ -1,6 +1,7 @@
 package 동작파라미터화;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.extractProperty;
 import static 동작파라미터화.Color.GREEN;
 import static 동작파라미터화.Color.RED;
 
@@ -66,11 +67,7 @@ class AppleTest {
 		applyPredicate(redApples);
 
 		// then
-		assertThat(redApples.size()).isEqualTo(3);
-		for (Apple redApple : redApples) {
-			assertThat(redApple.getColor()).isEqualTo(RED);
-			System.out.println("redApple.getColor() = " + redApple.getColor());
-		}
+		assertThat(extractProperty("Color", Color.class).from(redApples)).containsOnly(RED);
 	}
 
 	private void applyPredicate(List<Apple> apples) {
