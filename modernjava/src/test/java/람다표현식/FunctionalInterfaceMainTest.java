@@ -41,4 +41,17 @@ class FunctionalInterfaceMainTest {
 		assertThat(result).containsExactly("Hi", "Hello", "World ");
 	}
 
+	@Test
+	void functionTest() {
+		// given
+		List<String> words = List.of("1", "12", "123", "1234");
+		List<Integer> result = new ArrayList<>();
+
+		// when
+		result = FunctionalInterfaceMain.map(words, String::length);
+
+		// then
+		assertThat(result).containsExactly(1, 2, 3, 4);
+	}
+
 }
