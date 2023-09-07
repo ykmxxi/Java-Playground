@@ -4,6 +4,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -20,6 +23,22 @@ class FunctionalInterfaceMainTest {
 		// then
 		assertThat(oneLine).isEqualTo("첫 번째 줄");
 		assertThat(twoLine).isEqualTo("첫 번째 줄두 번째 줄");
+	}
+
+	@Test
+	@DisplayName("Predicate: 비어있거나 공백인 문자를 필터링")
+	void predicateTest() {
+		// given
+		Predicate<String> rejectEmptyOrWhitespaces = (String s) -> !s.isBlank();
+		List<String> words = List.of("   ", "Hi", "Hello", "", "World ");
+		List<String> result = new ArrayList<>();
+
+		// when
+		result = FunctionalInterfaceMain.filter(words, rejectEmptyOrWhitespaces);
+
+		// then
+		assertThat(result.size()).isEqualTo(3);
+		assertThat(result).containsExactly("Hi", "Hello", "World ");
 	}
 
 }

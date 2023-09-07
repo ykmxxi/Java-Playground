@@ -3,6 +3,9 @@ package 람다표현식;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
 
 public class FunctionalInterfaceMain {
 
@@ -16,6 +19,21 @@ public class FunctionalInterfaceMain {
 		try (BufferedReader br = new BufferedReader(new FileReader(FILE_PATH))) {
 			return p.process(br);
 		}
+	}
+
+	/**
+	 * Predicate: test() 추상 메서드를 정의하고 있는 함수형 인터페이스
+	 * test(): 제네릭 형식의 T 객체를 인수로 받아 boolean 반환
+	 */
+	public static <T> List<T> filter(List<T> list, Predicate<T> p) {
+		List<T> results = new ArrayList<>();
+
+		for (T t : list) {
+			if (p.test(t)) {
+				results.add(t);
+			}
+		}
+		return results;
 	}
 
 	public static void main(String[] args) {
