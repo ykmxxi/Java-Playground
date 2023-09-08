@@ -11,4 +11,12 @@ public class Apple {
 	private final int weight;
 	private final Color color;
 
+	@Override
+	public String toString() {
+		return "Apple{" +
+			"weight=" + weight +
+			", color=" + color +
+			'}';
+	}
+
 }
