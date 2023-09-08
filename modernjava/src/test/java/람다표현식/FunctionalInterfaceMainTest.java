@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.DisplayName;
@@ -52,6 +53,25 @@ class FunctionalInterfaceMainTest {
 
 		// then
 		assertThat(result).containsExactly(1, 2, 3, 4);
+	}
+
+	@Test
+	@DisplayName("Function 조합 테스트: andThen, compose")
+	void functionCombination() {
+		// given
+		Function<Integer, Integer> f = x -> x + 1;
+		Function<Integer, Integer> g = x -> x * 2;
+
+		Function<Integer, Integer> andThen = f.andThen(g);
+		Function<Integer, Integer> compose = f.compose(g);
+
+		// when
+		int andThenResult = andThen.apply(2);
+		int composeResult = compose.apply(2);
+
+		// then
+		assertThat(andThenResult).isEqualTo(6);
+		assertThat(composeResult).isEqualTo(5);
 	}
 
 }
