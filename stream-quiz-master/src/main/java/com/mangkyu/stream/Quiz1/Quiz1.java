@@ -7,6 +7,9 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.IntStream;
 
 import com.opencsv.CSVReader;
 
@@ -39,7 +42,23 @@ public class Quiz1 {
 	// 1.3 소개 내용에 '좋아'가 몇번 등장하는지 계산하여라.
 	public int quiz3() throws IOException {
 		List<String[]> csvLines = readCsvLines();
-		return 0;
+
+		return csvLines.stream()
+					   .map(line -> line[2]) // 소개 내용은 세 번째 값
+					   .flatMapToInt(this::countLike) // '좋아' 개수를 스트림으로 반환
+					   .reduce(0, Integer::sum); // .sum()을 사용해도 됨
+	}
+
+	private IntStream countLike(String s) {
+		Pattern pattern = Pattern.compile("좋아");
+		Matcher matcher = pattern.matcher(s);
+
+		int cnt = 0;
+		while (matcher.find()) {
+			cnt++;
+		}
+
+		return IntStream.of(cnt);
 	}
 
 	private List<String[]> readCsvLines() throws IOException {
