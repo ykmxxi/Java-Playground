@@ -4,6 +4,7 @@ import static 스트림.Dish.Type.FISH;
 import static 스트림.Dish.Type.MEAT;
 import static 스트림.Dish.Type.OTHER;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -47,6 +48,26 @@ public class StreamMain {
 													.map(String::valueOf)
 													.collect(Collectors.toList());
 		System.out.println("lowCaloriesMenuTypeNames = " + lowCaloriesMenuTypeNames);
+
+		List<Dish> sortedByCalories = menu.stream()
+										  .sorted(Comparator.comparingInt(Dish::getCalories))
+										  .collect(Collectors.toList());
+
+		List<Dish> sliceMenu = sortedByCalories.stream()
+											   .takeWhile(dish -> dish.getCalories() < 450)
+											   .collect(Collectors.toList());
+		System.out.println("sliceMenu = " + sliceMenu);
+
+		List<Dish> highCaloriesMenu = sortedByCalories.stream()
+													  .dropWhile(dish -> dish.getCalories() < 450)
+													  .collect(Collectors.toList());
+		System.out.println("highCaloriesMenu = " + highCaloriesMenu);
+
+		List<Dish> topThreeHighCaloriesMenu = menu.stream()
+												  .sorted(Comparator.comparingInt(Dish::getCalories).reversed())
+												  .limit(3)
+												  .collect(Collectors.toList());
+		System.out.println("topThreeHighCaloriesMenu = " + topThreeHighCaloriesMenu);
 	}
 
 }
