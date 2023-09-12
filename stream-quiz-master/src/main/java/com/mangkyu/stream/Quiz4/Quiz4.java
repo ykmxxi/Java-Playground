@@ -1,7 +1,10 @@
 package com.mangkyu.stream.Quiz4;
 
+import static java.util.stream.Collectors.toList;
+
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Quiz4 {
@@ -26,7 +29,10 @@ public class Quiz4 {
 
 	// 4.1 2020년에 일어난 모든 거래 내역을 찾아 거래값을 기준으로 오름차순 정렬하라.
 	public List<Transaction> quiz1() {
-		return Collections.emptyList();
+		return transactions.stream()
+						   .filter(tx -> tx.getYear() == 2020)
+						   .sorted(Comparator.comparingInt(Transaction::getValue))
+						   .collect(toList());
 	}
 
 	// 4.2 거래 내역이 있는 거래자가 근무하는 모든 도시를 중복 없이 나열하라.
