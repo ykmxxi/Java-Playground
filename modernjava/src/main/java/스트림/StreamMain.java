@@ -39,6 +39,14 @@ public class StreamMain {
 											   .map(Dish::getName)
 											   .collect(Collectors.toList());
 		System.out.println("vegetarianDishNames = " + vegetarianDishNames);
+
+		List<String> lowCaloriesMenuTypeNames = menu.stream()
+													.filter(dish -> dish.getCalories() < 450)
+													.map(Dish::getType)
+													.distinct() // 고유 요소 필터링
+													.map(String::valueOf)
+													.collect(Collectors.toList());
+		System.out.println("lowCaloriesMenuTypeNames = " + lowCaloriesMenuTypeNames);
 	}
 
 }
