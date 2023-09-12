@@ -33,6 +33,12 @@ public class StreamMain {
 													 .limit(3)
 													 .collect(Collectors.toList());
 		System.out.println("threeHighCaloricDishNames = " + threeHighCaloricDishNames);
+
+		List<String> vegetarianDishNames = menu.stream()
+											   .filter(Dish::isVegetarian)
+											   .map(Dish::getName)
+											   .collect(Collectors.toList());
+		System.out.println("vegetarianDishNames = " + vegetarianDishNames);
 	}
 
 }
