@@ -1,7 +1,6 @@
 package com.mangkyu.stream.Quiz6;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -42,7 +41,13 @@ public class Quiz6 {
 
 	// 각 반별 총점을 학년 별로 나누어 구하여라 (Map<Integer, Map<Integer, Integer>>)
 	public Map<Integer, Map<Integer, Integer>> quiz2() {
-		return new HashMap<>();
+		// key: 학년, value: (key: 반, value: 총점)
+		return Arrays.stream(stuArr)
+					 .collect(Collectors.groupingBy(
+						 Student::getHak, Collectors.groupingBy(
+							 Student::getBan, Collectors.summingInt(Student::getScore)
+						 ))
+					 );
 	}
 
 }
