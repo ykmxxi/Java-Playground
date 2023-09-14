@@ -29,6 +29,37 @@ public class GroupingMain {
 			System.out.println("key = " + entry.getKey() + ", values = " + entry.getValue());
 		}
 		System.out.println(dishesByType);
+
+		// Collectors.filtering()
+		Map<Dish.Type, List<Dish>> caloricDishesByType =
+			menu.stream()
+				.collect(Collectors.groupingBy(
+					Dish::getType,
+					Collectors.filtering(
+						dish -> dish.getCalories() > 500, Collectors.toList())));
+
+		// 다수준 그룹화
+		Map<Dish.Type, Map<CaloricLevel, List<Dish>>> dishesByTypeCaloricLevel =
+			menu.stream()
+				.collect(Collectors.groupingBy(
+					Dish::getType,
+					// 첫 번째 수준의 분류 함수, [FISH, MEAT, OTHER]
+					Collectors.groupingBy(
+						dish -> { // 두 번째 수준의 분류 함수, [DIET, NORMAL, FAT]
+							if (dish.getCalories() <= 400) {
+								return CaloricLevel.DIET;
+							} else if (dish.getCalories() <= 700) {
+								return CaloricLevel.NORMAL;
+							} else {
+								return CaloricLevel.FAT;
+							}
+						})
+				));
+		System.out.println("dishesByTypeCaloricLevel = " + dishesByTypeCaloricLevel);
 	}
 
+}
+
+enum CaloricLevel {
+	DIET, NORMAL, FAT
 }
