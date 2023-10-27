@@ -13,23 +13,23 @@ import 동작파라미터화.Color;
 
 public class MethodReferenceMain {
 
-	public static void main(String[] args) {
-		List<Integer> weights = Arrays.asList(100, 150, 200, 300, 160);
-		List<Color> colors = Arrays.asList(GREEN, RED, GREEN, RED, GREEN);
+    public static void main(String[] args) {
+        List<Integer> weights = Arrays.asList(100, 150, 200, 300, 160);
+        List<Color> colors = Arrays.asList(GREEN, RED, GREEN, RED, GREEN);
 
-		List<Apple> apples = map(weights, colors, Apple::new);
-		for (Apple apple : apples) {
-			System.out.println("apple = " + apple);
-		}
-	}
+        List<Apple> apples = map(weights, colors, Apple::new);
+        for (Apple apple : apples) {
+            System.out.println("apple = " + apple);
+        }
+    }
 
-	public static List<Apple> map(List<Integer> weights, List<Color> colors, BiFunction<Integer, Color, Apple> f) {
-		List<Apple> result = new ArrayList<>();
+    public static List<Apple> map(List<Integer> weights, List<Color> colors, BiFunction<Integer, Color, Apple> f) {
+        List<Apple> result = new ArrayList<>();
 
-		for (int i = 0; i < weights.size(); i++) {
-			result.add(f.apply(weights.get(i), colors.get(i)));
-		}
-		return result;
-	}
+        for (int i = 0; i < weights.size(); i++) {
+            result.add(f.apply(weights.get(i), colors.get(i)));
+        }
+        return result;
+    }
 
 }

@@ -10,17 +10,17 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 class JunitTest {
 
-	@ParameterizedTest
-	@MethodSource("testData")
-	void methodSourceTest(String result, String expected) {
-		assertThat(result).isEqualTo(expected);
-	}
+    @ParameterizedTest
+    @MethodSource("testData")
+    void methodSourceTest(String result, String expected) {
+        assertThat(result).isEqualTo(expected);
+    }
 
-	private static Stream<Arguments> testData() {
-		return Stream.of(
-			Arguments.of("Hello", "Hello"),
-			Arguments.of("World", "World")
-		);
-	}
+    private static Stream<Arguments> testData() {
+        return Stream.of(
+                Arguments.of("Hello", "Hello"),
+                Arguments.of("World", "World")
+        );
+    }
 
 }

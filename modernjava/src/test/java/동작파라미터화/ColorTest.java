@@ -6,13 +6,13 @@ import org.junit.jupiter.api.Test;
 
 class ColorTest {
 
-	@Test
-	void equalsTest() {
-		Color red1 = Color.RED;
-		Color red2 = Color.RED;
+    @Test
+    void equalsTest() {
+        Color red1 = Color.RED;
+        Color red2 = Color.RED;
 
-		assertThat(red1).isEqualTo(red2);
-		assertThat(red1.equals(red2)).isTrue();
-	}
+        assertThat(red1).isEqualTo(red2);
+        assertThat(red1.equals(red2)).isTrue();
+    }
 
 }
