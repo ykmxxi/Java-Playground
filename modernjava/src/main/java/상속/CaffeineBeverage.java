@@ -1,12 +1,23 @@
 package 상속;
 
-public class CaffeineBeverage {
+public abstract class CaffeineBeverage {
 
-    public void boilWater() {
+    abstract void brew();
+
+    abstract void addCondiments();
+
+    void prepareRecipe() {
+        boilWater();
+        brew();
+        pourInCup();
+        addCondiments();
+    }
+
+    protected void boilWater() {
         System.out.println("물을 끓인다");
     }
 
-    public void pourInCup() {
+    protected void pourInCup() {
         System.out.println("컵에 붓는다");
     }
 
