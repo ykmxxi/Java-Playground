@@ -20,52 +20,23 @@ package chap3;
 public class MusicPlayerApplication {
 
     public static void main(String[] args) {
-        MusicPlayerData data = new MusicPlayerData();
+        MusicPlayer musicPlayer = new MusicPlayer();
 
         // 음악 플레이어 켜기
-        on(data);
+        musicPlayer.on();
 
         // 볼륨 증가
-        increaseVolume(data);
-        increaseVolume(data);
+        musicPlayer.increaseVolume();
+        musicPlayer.increaseVolume();
 
         // 볼륨 감소
-        decreaseVolume(data);
+        musicPlayer.decreaseVolume();
 
         // 음악 플레이어 상태
-        showStatus(data);
+        musicPlayer.showStatus();
 
         // 음악 플레이어 끄기
-        off(data);
-    }
-
-    private static void on(final MusicPlayerData data) {
-        data.isOn = true;
-        System.out.println("음악 플레이어를 시작");
-    }
-
-    private static void increaseVolume(final MusicPlayerData data) {
-        data.volume++;
-        System.out.println("음악 플레이어 볼륨: " + data.volume);
-    }
-
-    private static void decreaseVolume(final MusicPlayerData data) {
-        data.volume--;
-        System.out.println("음악 플레이어 볼륨: " + data.volume);
-    }
-
-    private static void showStatus(final MusicPlayerData data) {
-        System.out.println("음악 플레이어 상태 확인");
-        if (data.isOn) {
-            System.out.println("음악 플레이어 ON, 음악 플레이어 볼륨: " + data.volume);
-        } else {
-            System.out.println("음악 플레이어 OFF");
-        }
-    }
-
-    private static void off(final MusicPlayerData data) {
-        data.isOn = false;
-        System.out.println("음악 플레이어를 종료합니다.");
+        musicPlayer.off();
     }
 
 }
