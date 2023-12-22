@@ -6,4 +6,9 @@ public class Car {
         System.out.println("차를 이동합니다.");
     }
 
+
+    public void openDoor() {
+        System.out.println("문열 엽니다.");
+    }
+
 }
