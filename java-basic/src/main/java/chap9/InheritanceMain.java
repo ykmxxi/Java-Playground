@@ -8,6 +8,9 @@ public class InheritanceMain {
         Child child = new Child();
 
         child.call();
+
+        System.out.println();
+        child.superCall();
     }
 
 }

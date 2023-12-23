@@ -2,10 +2,15 @@ package chap9.parent;
 
 public class Parent {
 
+    public String value = "parent";
     public int publicValue;
     protected int protectedValue;
     int defaultValue;
     private int privateValue;
+
+    public void hello() {
+        System.out.println("Parent.hello");
+    }
 
     public void publicMethod() {
         System.out.println("Parent.publicMethod");
