@@ -1,7 +1,8 @@
 package chap11;
 
-public class Dog {
+public class Dog extends Animal {
 
+    @Override
     public void sound() {
         System.out.println("멍멍");
     }
