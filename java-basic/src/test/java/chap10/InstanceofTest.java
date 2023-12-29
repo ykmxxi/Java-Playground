@@ -26,4 +26,10 @@ class InstanceofTest {
         assertThat(new Child() instanceof Child).isTrue(); // Child 타입에 Child 인스턴스가 들어갈 수 있다
     }
 
+    @Test
+    void 인터페이스_instanceof() {
+        assertThat(new Dog() instanceof Dog).isTrue();
+        assertThat(new Dog() instanceof Animal).isTrue();
+    }
+
 }
