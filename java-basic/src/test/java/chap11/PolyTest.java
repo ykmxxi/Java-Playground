@@ -19,4 +19,15 @@ class PolyTest {
         assertThat(superClass.get()).isEqualTo("sub");
     }
 
+    @Test
+    void 상속관계() {
+        SuperClass sup= new SuperClass();
+        SubClass sub = new SubClass();
+        SuperClass poly = new SubClass();
+
+        assertThat(sup.value).isEqualTo("parent");
+        assertThat(sub.value).isEqualTo("child");
+        assertThat(poly.value).isEqualTo("parent");
+    }
+
 }
