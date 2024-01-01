@@ -7,9 +7,10 @@ public class AnimalSoundMain {
         Cat cat = new Cat();
         Caw caw = new Caw();
 
-        soundAnimal(dog);
-        soundAnimal(cat);
-        soundAnimal(caw);
+        Animal[] animals = {dog, cat, caw};
+        for (Animal animal : animals) {
+            soundAnimal(animal);
+        }
     }
 
     private static void soundAnimal(final Animal animal) {
