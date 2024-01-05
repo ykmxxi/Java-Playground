@@ -5,7 +5,8 @@ import java.util.Arrays;
 public enum PayType {
 
     KAKAO("kakao", new KakaoPay()),
-    NAVER("naver", new NaverPay());
+    NAVER("naver", new NaverPay()),
+    TOSS("toss", new TossPay());
 
     private final String name;
     private final Pay pay;
@@ -17,15 +18,10 @@ public enum PayType {
 
     public static Pay findPayment(final String option) {
         return Arrays.stream(PayType.values())
-                .filter(payType -> payType.hasPayType(option))
-                .findAny()
+                .filter(payType -> payType.name.equals(option))
+                .findFirst()
                 .map(payType -> payType.pay)
                 .orElse(new DefaultPay());
-    }
-
-    private boolean hasPayType(final String option) {
-        return Arrays.stream(PayType.values())
-                .anyMatch(payType -> payType.name.equals(option));
     }
 
 }
