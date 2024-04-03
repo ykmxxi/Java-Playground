@@ -1,16 +1,18 @@
 package org.example.reflection;
 
-public class Member {
+public class Member extends BaseEntity {
 
     private String name;
     private int age;
 
-    public Member(final String name, final int age) {
+    public Member(final long id, final String name, final int age) {
+        super(id);
         this.name = name;
         this.age = age;
     }
 
     private Member(final String name) {
+        super(1L);
         this.name = name;
         this.age = 1;
     }
@@ -21,6 +23,10 @@ public class Member {
 
     public int getAge() {
         return age;
+    }
+
+    private void memberPrivateMethod() {
+        System.out.println("private do something");
     }
 
 }
