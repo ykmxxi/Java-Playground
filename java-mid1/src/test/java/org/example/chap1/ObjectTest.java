@@ -78,4 +78,26 @@ class ObjectTest {
         return obj.toString();
     }
 
+    @Test
+    @DisplayName("Object 클래스가 제공하는 equals()는 == 연산으로 객체의 참조값이 동일한지 비교")
+    void object_equals() {
+        String id = "id-100";
+        UserV1 user1 = new UserV1(id);
+        UserV1 user2 = new UserV1(id);
+
+        assertThat(user1.equals(user2)).isFalse();
+        assertThat(user1.getId()).isEqualTo(user2.getId());
+    }
+
+    @Test
+    @DisplayName("논리적 지위가 같은 객체를 동등하다 판단하기 위해 equals() 메서드 오버라이딩 필요")
+    void equals_오버라이딩() {
+        String id = "id-100";
+        UserV2 user1 = new UserV2(id);
+        UserV2 user2 = new UserV2(id);
+
+        assertThat(user1.equals(user2)).isTrue(); // 동등한 관계(논리적 지위가 같다)
+        assertThat(user1 == user2).isFalse(); // 하지만 참조값이 다름
+    }
+
 }
