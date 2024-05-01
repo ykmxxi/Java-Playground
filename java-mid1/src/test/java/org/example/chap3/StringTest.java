@@ -44,4 +44,15 @@ class StringTest {
         return x.equals(y);
     }
 
+    @Test
+    @DisplayName("String 불변 객체: 내부의 값을 변경할 수 없음")
+    void 불변객체_String() {
+        String str1 = "hello";
+        str1.concat(" world");
+        assertThat(str1).isEqualTo("hello");
+
+        String str2 = str1.concat(" world");
+        assertThat(str2).isEqualTo("hello world");
+    }
+
 }
