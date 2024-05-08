@@ -41,4 +41,14 @@ class GradeTest {
         assertThat(DIAMOND.toString()).isEqualTo("DIAMOND");
     }
 
+    @Test
+    @DisplayName("대상 할인 금액 계산 책임을 Grade 클래스에 부여한다")
+    void discount() {
+        int price = 10_000;
+
+        assertThat(BASIC.discount(price)).isEqualTo(1_000);
+        assertThat(GOLD.discount(price)).isEqualTo(2_000);
+        assertThat(DIAMOND.discount(price)).isEqualTo(3_000);
+    }
+
 }
