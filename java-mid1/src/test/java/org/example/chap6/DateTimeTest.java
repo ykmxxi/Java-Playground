@@ -4,11 +4,13 @@ import static java.time.temporal.ChronoField.MONTH_OF_YEAR;
 import static java.time.temporal.ChronoField.YEAR;
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Period;
 import java.time.temporal.ChronoField;
 import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalAdjusters;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -63,6 +65,33 @@ public class DateTimeTest {
 
         assertThat(now.isSupported(ChronoField.SECOND_OF_MINUTE)).isFalse();
         assertThat(now.isSupported(ChronoField.YEAR)).isTrue();
+    }
+
+    @Test
+    @DisplayName("Temporal with(TemporalField field, long newValue): 날짜와 시간의 특정 필드의 값만 변경")
+    void with() {
+        LocalDateTime dt = LocalDateTime.of(2030, 1, 1, 13, 30, 59);
+
+        LocalDateTime with = dt.with(YEAR, 2024); // 불변 값 반환
+        assertThat(with.getYear()).isEqualTo(2024);
+        assertThat(with.getMonthValue()).isEqualTo(1);
+
+        // 편의 메서드
+        LocalDateTime withYear = dt.withYear(2024);
+        assertThat(withYear.getYear()).isEqualTo(2024);
+        assertThat(withYear.getMonthValue()).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("with()에 TemporalAdjuster 사용, 복잡한 날짜 계산")
+    void temporalAdjuster_with() {
+        LocalDateTime dt = LocalDateTime.of(2030, 1, 1, 13, 30, 59);
+
+        LocalDateTime nextFriday = dt.with(TemporalAdjusters.next(DayOfWeek.FRIDAY)); // 다음주 금요일
+        assertThat(nextFriday.getDayOfWeek()).isEqualTo(DayOfWeek.FRIDAY);
+
+        LocalDateTime lastSunday = dt.with(TemporalAdjusters.lastInMonth(DayOfWeek.SUNDAY));
+        assertThat(lastSunday.getDayOfWeek()).isEqualTo(DayOfWeek.SUNDAY);
     }
 
 }
