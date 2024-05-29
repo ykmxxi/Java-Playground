@@ -2,6 +2,7 @@ package org.example.chap8;
 
 import java.lang.reflect.Field;
 
+import org.example.chap8.anonymous.AnonymousOuter;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -25,6 +26,13 @@ class LocalClassTest {
         for (Field field : fields) {
             System.out.println("field = " + field);
         }
+    }
+
+    @Test
+    @DisplayName("익명 클래스: 이름이 없는 일회성 지역 클래스")
+    void ex3() {
+        AnonymousOuter anonymousOuter = new AnonymousOuter();
+        anonymousOuter.process(2);
     }
 
 }
