@@ -19,7 +19,7 @@ public class NetworkClientV2 {
 
     public void send(final String data) throws NetworkClientExceptionV2 {
         if (sendError) {
-            throw new NetworkClientExceptionV2(address + " 서버에 데이터 전송 실패: " + data, "sendError");
+            throw new NetworkClientExceptionV2(address + " 서버에 데이터 전송 실패", "sendError");
         }
         System.out.println(address + " 서버에 데이터 전송: " + data);
     }
