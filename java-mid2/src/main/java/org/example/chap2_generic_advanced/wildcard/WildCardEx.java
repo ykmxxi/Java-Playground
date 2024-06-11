@@ -35,4 +35,8 @@ public class WildCardEx {
         return animal;
     }
 
+    public static void superMethod(Box<? super Animal> box) {
+        System.out.println(box.get());
+    }
+
 }
