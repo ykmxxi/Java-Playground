@@ -33,4 +33,11 @@ public class Member {
         return Objects.hash(getId()); // id 값을 기반으로 해시 코들 생성 -> 동등성
     }
 
+    @Override
+    public String toString() {
+        return "Member{" +
+                "id='" + id + '\'' +
+                '}';
+    }
+
 }
