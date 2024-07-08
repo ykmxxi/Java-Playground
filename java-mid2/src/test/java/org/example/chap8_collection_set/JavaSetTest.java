@@ -2,10 +2,12 @@ package org.example.chap8_collection_set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.TreeSet;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,11 +16,13 @@ public class JavaSetTest {
 
     private Set<Integer> hashSet;
     private Set<Integer> linkedHashSet;
+    private Set<String> treeSet;
 
     @BeforeEach
     void setUp() {
         hashSet = new HashSet<>();
         linkedHashSet = new LinkedHashSet<>();
+        treeSet = new TreeSet<>();
     }
 
     @Test
@@ -73,6 +77,30 @@ public class JavaSetTest {
         Integer[] arr = new Integer[hashSet.size()];
         hashSet.toArray(arr);
         assertThat(arr).contains(1, 2, 5, 8, 14, 99);
+    }
+
+    @Test
+    void treeSetTest() {
+        treeSet.add("C");
+        treeSet.add("B");
+        treeSet.add("A");
+        treeSet.add("2");
+        treeSet.add("1");
+
+        System.out.println("treeSet = " + treeSet);
+
+        // 정렬 상태로 저장: 기본은 오름차순
+        assertThat(treeSet).containsExactly("1", "2", "A", "B", "C");
+
+        // 비교자(Comparator)를 넘겨 내림차순으로 저장
+        Set<String> reverseTreeSet = new TreeSet<>(Collections.reverseOrder());
+        reverseTreeSet.add("C");
+        reverseTreeSet.add("B");
+        reverseTreeSet.add("A");
+        reverseTreeSet.add("2");
+        reverseTreeSet.add("1");
+        System.out.println("reverseTreeSet = " + reverseTreeSet);
+        assertThat(reverseTreeSet).containsExactly("C", "B", "A", "2", "1");
     }
 
     private void addData(final Set<Integer> set) {
