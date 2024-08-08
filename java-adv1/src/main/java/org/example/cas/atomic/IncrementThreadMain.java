@@ -13,6 +13,7 @@ public class IncrementThreadMain {
         test(new BasicInteger()); // 982
         test(new VolatileInteger()); // 993
         test(new SyncInteger()); // 1,000
+        test(new MyAtomicInteger()); // 1,000
     }
 
     private static void test(final IncrementInteger incrementInteger) throws InterruptedException {
