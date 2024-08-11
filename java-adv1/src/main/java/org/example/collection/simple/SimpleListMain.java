@@ -2,13 +2,14 @@ package org.example.collection.simple;
 
 import static org.example.util.MyLogger.log;
 
-import org.example.collection.simple.list.BasicList;
 import org.example.collection.simple.list.SimpleList;
+import org.example.collection.simple.list.SyncList;
 
 public class SimpleListMain {
 
     public static void main(String[] args) throws InterruptedException {
-        test(new BasicList());
+        //test(new BasicList());
+        test(new SyncList());
     }
 
     private static void test(final SimpleList list) throws InterruptedException {
