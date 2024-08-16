@@ -41,11 +41,8 @@ public class CallableTaskMain {
         @Override
         public Integer call() throws Exception {
             log("작업 시작");
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+            Thread.sleep(2000);
+            
             int sum = 0;
             for (int i = startValue; i <= endValue; i++) {
                 sum += i;
