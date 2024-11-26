@@ -1,12 +1,12 @@
 package io.member.memory;
 
-import io.member.MemoryMemberClient;
+import io.member.MemberClient;
 
 public class MemoryMemberMain {
 
     public static void main(String[] args) {
-        MemoryMemberClient memoryMemberClient = new MemoryMemberClient(new MemoryMemberRepository());
-        memoryMemberClient.run();
+        MemberClient memberClient = new MemberClient(new MemoryMemberRepository());
+        memberClient.run();
     }
 
 }

@@ -2,13 +2,13 @@ package io.member;
 
 import java.util.List;
 
-public class MemoryMemberClient {
+public class MemberClient {
 
     private final MemberRepository memberRepository;
     private final InputView inputView;
     private final OutputView outputView;
 
-    public MemoryMemberClient(final MemberRepository memberRepository) {
+    public MemberClient(final MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
         this.inputView = new InputView();
         this.outputView = new OutputView();

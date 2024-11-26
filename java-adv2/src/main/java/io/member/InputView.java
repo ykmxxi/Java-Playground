@@ -26,7 +26,7 @@ public class InputView {
     }
 
     public int readAge() {
-        System.out.print("ID 입력: ");
+        System.out.print("Age 입력: ");
         int age = scanner.nextInt();
         scanner.nextLine();
         return age;
