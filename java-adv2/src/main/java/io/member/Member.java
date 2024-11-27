@@ -1,6 +1,8 @@
 package io.member;
 
-public class Member {
+import java.io.Serializable;
+
+public class Member implements Serializable {
 
     private final String id;
     private final String name;
