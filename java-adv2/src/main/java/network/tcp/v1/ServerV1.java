@@ -16,7 +16,9 @@ public class ServerV1 {
         log("서버 시작");
 
         try (
+                // 서버 소켓은 TCP 연결만 지원하는 특별한 소켓
                 ServerSocket serverSocket = new ServerSocket(PORT);
+                // 실제 정보를 주고받는 것은 Socket
                 Socket socket = serverSocket.accept()
         ) {
             log("서버 소켓 시작 - 리스닝 포트: " + PORT);

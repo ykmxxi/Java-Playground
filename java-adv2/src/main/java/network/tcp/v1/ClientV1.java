@@ -18,7 +18,7 @@ public class ClientV1 {
                 DataInputStream input = new DataInputStream(socket.getInputStream());
                 DataOutputStream output = new DataOutputStream(socket.getOutputStream())
         ) {
-            log("소켓 연결: " + socket);
+            log("소켓 연결: " + socket); // 클라이언트의 포트는 남아있는 포트 중 랜덤 할당
 
             // server 문자 보내기
             String sendMessage = "Hello";
