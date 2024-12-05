@@ -32,7 +32,7 @@ public class Database {
     }
 
     public static void saveUser(final User user) {
-        users.put(user.getUserId(), user);
+        users.computeIfPresent(user.getUserId(), (k, v) -> user);
     }
 
 }
