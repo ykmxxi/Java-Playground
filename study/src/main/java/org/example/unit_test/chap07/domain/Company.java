@@ -1,4 +1,4 @@
-package org.example.unit_test.chap07;
+package org.example.unit_test.chap07.domain;
 
 import java.util.List;
 import java.util.Objects;
@@ -18,6 +18,10 @@ public class Company {
 
     public String getDomainName() {
         return domainName;
+    }
+
+    public int getNumberOfEmployees() {
+        return employees.size();
     }
 
     @Override
