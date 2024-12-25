@@ -9,6 +9,12 @@ public class User {
     public String email;
     public UserType type;
 
+    public User(final Long userId, final String email, final UserType type) {
+        this.userId = userId;
+        this.email = email;
+        this.type = type;
+    }
+
     public int changeEmail(final Company company, final String newEmail) {
         if (this.email.equals(newEmail)) {
             return company.getNumberOfEmployees();
