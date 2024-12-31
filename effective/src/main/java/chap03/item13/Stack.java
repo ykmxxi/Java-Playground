@@ -4,15 +4,15 @@ import java.util.Arrays;
 
 public class Stack implements Cloneable {
 
+    private static final int DEFAULT_INITIAL_CAPACITY = 16;
     private Object[] elements;
     private int size = 0;
-    private static final int DEFAULT_INITIAL_CAPACITY = 16;
 
     public Stack() {
         this.elements = new Object[DEFAULT_INITIAL_CAPACITY];
     }
 
-    public void push(Object e) {
+    public void push(final Object e) {
         ensureCapacity();
         elements[size++] = e;
     }

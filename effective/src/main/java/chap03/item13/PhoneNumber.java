@@ -27,10 +27,9 @@ public final class PhoneNumber implements Cloneable {
         if (o == this) {
             return true;
         }
-        if (!(o instanceof PhoneNumber)) {
+        if (!(o instanceof PhoneNumber pn)) {
             return false;
         }
-        PhoneNumber pn = (PhoneNumber) o;
         return pn.lastNum == lastNum && pn.midNum == midNum
                 && pn.frontNum == frontNum;
     }
@@ -54,6 +53,8 @@ public final class PhoneNumber implements Cloneable {
     @Override
     protected PhoneNumber clone() {
         try {
+            // Object.clone()은 Object 반환, 공변 반환 타입(covariant return typing) 지원
+            // 캐스팅해서 반환하는 것을 권장
             return (PhoneNumber) super.clone();
         } catch (CloneNotSupportedException e) {
             throw new AssertionError(); // 일어날 수 없는 일
