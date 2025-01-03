@@ -53,6 +53,7 @@ public final class PhoneNumber implements Cloneable, Comparable<PhoneNumber> {
                     .thenComparingInt(pn -> pn.prefix)
                     .thenComparingInt(pn -> pn.lineNum);
 
+    @Override
     public int compareTo(final PhoneNumber pn) {
         return COMPARATOR.compare(this, pn);
     }
