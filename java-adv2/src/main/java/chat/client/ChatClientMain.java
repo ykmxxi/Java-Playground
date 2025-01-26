@@ -1,8 +1,7 @@
-package chat;
+package chat.client;
 
 import java.io.IOException;
 
-import chat.client.ChatClient;
 import chat.common.Network;
 
 public class ChatClientMain {
